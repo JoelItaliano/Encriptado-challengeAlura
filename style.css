@@ -1,0 +1,91 @@
+*{padding: 0; margin: 0; box-sizing: border-box;}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #E5E5E5;
+    font-family: 'Inter', sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+}
+/*seccion del texto desencriptado*/
+.cont_txt--desencriptado {
+    width: 940px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+}
+/*Logo de A*/
+.cont_logo{
+    position: absolute;
+    left: 0;
+}
+
+.cont_textarea textarea{
+    width: 680px;
+    height: 500px;
+   
+    font-size: 32px;
+    color: #0A3871; 
+
+    background-color: #E5E5E5;
+    border-style: none;
+
+    margin: 60px
+}
+
+.msj_Alert{
+    display: flex;
+    gap: 10px;
+}
+
+/*seccion de botones encrip y desencrip*/
+
+.cont_button{
+    
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 10px 0 20px;
+}
+
+.cont_button button{
+    width: 300px;
+    height: 60px;
+    border-radius: 24px
+}
+
+.btn_encriptar {
+    color: #fff;
+    background: #0A3871;
+}
+
+.btn_desencriptar {
+    color: #0A3871;
+    background: #D8DFE8;
+    border: 1px solid #0A3871
+}
+
+
+/*seccion de texto encripatado*/
+.cont_txt--encriptado{
+    width:  400px;
+    height: 944px;
+    
+    background-color: #fff;
+    border-radius: 32px;
+
+}
