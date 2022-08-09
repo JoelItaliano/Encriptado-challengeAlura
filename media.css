@@ -1,0 +1,14 @@
+
+.cont_imgPersonaje{
+    display: none;
+}
+
+.cont__buttons--alert {
+    margin: 0 auto;
+}
+
+.cont_txt--desencriptado ,.cont_txt--encriptado{
+    width: 98%;
+    padding: 15px;
+    margin: 0 auto;
+}
