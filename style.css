@@ -16,15 +16,17 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: stretch;
     gap: 20px;
     padding: 40px 20px;
 }
 /*seccion del texto desencriptado*/
 .cont_txt--desencriptado {
-    width: clamp(300px,50%,940px);
+    width: clamp(350px,50%,940px);
     position: relative;
 
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -37,14 +39,16 @@ main{
 }
 
 .cont_textarea{
-    width: 95%;
+    width: clamp(300px, 95%, 900px);
     height: 500px;
+
+    box-sizing: border-box;
     
 }
 
 .cont_textarea textarea{
-    width: 95%;    
-   
+   width: clamp(300px, 95%, 900px);
+   height: auto;
     font-size: 32px;
     color: #0A3871; 
 
@@ -54,6 +58,8 @@ main{
     margin: 60px;
 
     outline: none;
+
+    box-sizing: border-box;
 }
 
 .msj_Alert{
@@ -63,11 +69,11 @@ main{
 
 /*seccion de botones encrip y desencrip*/
 .cont__buttons--alert {
-    width: clamp(350px,95%,940px);
+    width: clamp(300px,95%,940px);
 }
 
 .cont_button{
-        
+    width: 100%;    
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -75,7 +81,7 @@ main{
 }
 
 .cont_button button{
-    width: 300px;
+    width: clamp(60px ,50%,300px);
     height: 60px;
     border-radius: 24px
 }
@@ -95,6 +101,7 @@ main{
 /*seccion de texto encripatado*/
 .cont_txt--encriptado{
     width:  clamp(320px,45%,400px);
+    height: auto;
     padding: 25px;
     
     background-color: #fff;
@@ -130,6 +137,25 @@ main{
     border-style: none;
     outline: none;
     
+}
+
+.cont_btn-copiar {
+    width: clamp(250px, 80%, 350px);
+    margin: 15px auto;
+    text-align: center;
+}
+
+.btn-copiar{
+    width: 100%;
+    
+    background: #D8DFE8;
+    border: 1px solid #0A3871;
+    border-radius: 30px;
+
+    padding: 20px 25px;
+
+    color: #0A3871;
+    font-size: 20px;
 }
 
 footer{
