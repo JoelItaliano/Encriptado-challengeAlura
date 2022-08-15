@@ -1,19 +1,26 @@
 const txtDesencriptado = document.getElementById("txt--desencriptado");
 const txtEncriptado = document.getElementById("txt--encriptado");
 const btnEncriptar = document.getElementById("btn_encriptar");
-const btnDesencriptar = document.getElementById("btn_desencriptar")
+const btnDesencriptar = document.getElementById("btn_desencriptar");
 
-const contenTxtEncriptado = document.querySelector(".cont_txt--encriptado")
-const contenImgAndTitle = document.querySelector(".cont_img-title")
+const btnCopiarTxtEncriptado = document.querySelector(".btn-copiarEncriptado");
+const btnCopiarTxtDesencriptado = document.querySelector(".btn-copiarDesencriptado");
 
+const contenTxtEncriptado = document.querySelector(".cont_txt--encriptado");
+const contenImgAndTitle = document.querySelector(".cont_img-title");
 
+let validaMayuscula = true;
+let validaAcentos = true;
 
 /**
  * funcion para encriptar con regex y replace
  */
 function encriptarTxt() {
 
-    if(txtDesencriptado.value != ''){
+    contieneMayusculas(txtDesencriptado);
+    contieneAcentos(txtDesencriptado);
+
+    if(txtDesencriptado.value != '' && validaMayuscula && validaAcentos){
         txtEncriptado.value  = txtDesencriptado.value.replace(/e/g, 'enter').replace(/i/g, 'imes').replace(/a/g, 'ai').replace(/o/g, 'ober').replace(/u/g, 'ufat');
         alturaTextArea();
     }
@@ -23,9 +30,13 @@ function encriptarTxt() {
  * fun para desencriptar con regex y replace
  */
 function desencriptarTxt() {
-    if(txtEncriptado.value != ''){        
+
+    contieneMayusculas(txtEncriptado);
+    contieneAcentos(txtEncriptado);
+
+    if(txtEncriptado.value != '' && validaMayuscula && validaAcentos){        
         txtDesencriptado.value  = txtEncriptado.value.replace(/enter/g, 'e').replace(/imes/g, 'i').replace(/ai/g, 'a').replace(/ober/g, 'o').replace(/ufat/g, 'u');
-        alturaTextArea()
+        alturaTextArea();
     }
 }
 
@@ -35,11 +46,8 @@ function desencriptarTxt() {
  function alturaTextArea(){
     compruebaTxt();
     txtDesencriptado.style.height = `${txtDesencriptado.scrollHeight}px`;
-    txtEncriptado.style.height = `${txtEncriptado.scrollHeight}px`
-
+    txtEncriptado.style.height = `${txtEncriptado.scrollHeight}px`;
 }
-
-
 
 /**
  * funcion que comprueba que: si no hay texto en box encripado
@@ -53,8 +61,7 @@ function compruebaTxt() {
         txtEncriptado.style.fontSize = "16px";
     }else{
         styleContenTxtEncriptado();
-    }
-    
+    }    
 }
 
 /*
@@ -66,8 +73,67 @@ function styleContenTxtEncriptado(){
     txtEncriptado.style.fontSize = "25px";   
 } 
 
+/**
+ * Funcion para saber si el texto ingresado contiene mayusculas
+ * se usa regex para eleminar los espacios en blanco donde causaba error
+ */
+function contieneMayusculas(texto){
+
+    //retira los espacios en blanco
+    const cadena = texto.value.replace(/ /g, "");
+
+    for (const char of cadena){
+        let charMayuscula = char.toUpperCase();
+
+        if (char == charMayuscula){
+            alert('Letra mayuscula detectada: ' + char);
+            validaMayuscula = false;    
+            break
+        }else {
+            validaMayuscula = true;
+        }
+    }
+
+
+    
+}
+/*
+* funcion para valida acentos, 
+* si se encuentra las palabras acentadas devuele true y evita la ejecucion de codigo
+*/
+function contieneAcentos(texto){
+    
+    const cadena = texto.value.replace(/ /g, "");
+       
+   // si encuentra acentos devuelve false 
+   validaAcentos = /^[a-zA-Z]+$/.test(cadena) 
+  
+    if(!validaAcentos){
+        alert(`El contenido del texto no debe tener tíldes y masyusculas`)
+    }
+}
+
+
+
+function copiarTxtEncriptado() {    
+    txtEncriptado.select();
+    document.execCommand('copy')
+    alert("Texto encriptado copiado");
+
+}
+
+function copiarTxtDesencriptado() {    
+    txtDesencriptado.select();
+    document.execCommand('copy')
+    alert("Texto deseencriptado copiado");
+
+}
+
+
 
 txtDesencriptado.oninput = alturaTextArea;
 txtEncriptado.oninput = alturaTextArea;
 btnEncriptar.onclick = encriptarTxt;
 btnDesencriptar.onclick = desencriptarTxt;
+btnCopiarTxtEncriptado.onclick = copiarTxtEncriptado;
+btnCopiarTxtDesencriptado.onclick = copiarTxtDesencriptado;

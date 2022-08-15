@@ -147,14 +147,17 @@ main{
 }
 
 .cont_btn-copiar {
-    width: clamp(250px, 80%, 350px);
+    width: clamp(250px, 90%, 600px);
     margin: 15px auto;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    gap: 10px;
 }
 
-.btn-copiar{
-    width: 100%;
-    
+.btn-copiarEncriptado, .btn-copiarDesencriptado{
+    width: clamp(250px,40%,300px);    
     background: #D8DFE8;
     border: 1px solid #0A3871;
     border-radius: 30px;
@@ -162,7 +165,16 @@ main{
     padding: 20px 25px;
 
     color: #0A3871;
-    font-size: 20px;
+    font-size: 15px;
+}
+
+button{
+    transition: transform 2s;
+}
+
+button:hover{
+    transform: scale(1.05);
+    border-color: #D4AF37;    
 }
 
 footer{
